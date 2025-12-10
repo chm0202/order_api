@@ -203,13 +203,7 @@ src/main/java/com/example/demo
 }
 ```
 
-# 🗄 5. ERD 구조
-
-```
-Product (1) —— (N) OrderItem (N) —— (1) Order
-```
-
-# ⚙️ 6. 실행 방법
+# ⚙️ 5. 실행 방법
 
 ## 1) MySQL DB 생성
 ```sql
