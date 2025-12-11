@@ -1,10 +1,9 @@
-# 🛒 주문 & 상품 관리 REST API 프로젝트 (Order & Product API)
+# 주문 & 상품 관리 REST API 프로젝트
 
-Spring Boot 기반으로 구현된 **주문 / 상품 관리 REST API** 프로젝트입니다.  
-상품 등록, 주문 생성·조회·취소 기능과 함께 **공통 성공 응답 구조**,  
-**전역 예외 처리(GlobalExceptionHandler)**, **Swagger 문서화**, **MySQL + JPA 기반 데이터 처리** 등을 포함합니다.
+Spring Boot 기반으로 구현된 주문 / 상품 관리 REST API 프로젝트입니다.  
+상품 등록, 주문 생성·조회·취소 기능과 함께 전역 예외 처리, Swagger 문서화, MySQL + JPA 기반 데이터 처리 등을 포함합니다.
 
-# ✨ 설계 시 고민했던 부분
+# 설계 시 고민했던 부분
 
 ## 1) 응답 구조 통일 필요성
 REST API를 구축할 때 엔드포인트마다 서로 다른 응답 형식을 반환하면  
@@ -33,11 +32,11 @@ REST API를 구축할 때 엔드포인트마다 서로 다른 응답 형식을 �
 ## 3) 주문 생성 시 재고 처리 책임의 위치
 재고 감소와 복구 기능을 어디서 처리할 것인지가 핵심 고민이었음:
 
-### ❌ OrderService에서 직접 재고 감소 처리  
+### OrderService에서 직접 재고 감소 처리  
 → 서비스가 불필요하게 많은 책임을 가짐  
 → 객체지향적이지 않음
 
-### ✔️ Product 엔티티가 재고 감소/복구 기능을 소유하도록 설계  
+### Product 엔티티가 재고 감소/복구 기능을 소유하도록 설계  
 → 도메인 객체가 자신의 상태를 스스로 관리  
 → 수정 시 영향을 최소화할 수 있어 유지보수에 유리
 
@@ -63,12 +62,12 @@ Boot 3.5.x 환경과 springdoc-openapi 2.5.0은 충돌이 발생하여
 Swagger UI가 열리지 않는 문제가 있었음.
 
 해결 방법:
-- **Spring Boot 버전을 3.2.x로 다운그레이드**
+- Spring Boot 버전을 3.2.x로 다운그레이드
 - springdoc-openapi 2.5.0 유지
 
 이 조합이 안정적으로 작동하여 Swagger 문서화가 정상 구현됨.
 
-# 🛠 1. 기술 스택
+# 기술 스택
 
 | 구분 | 내용 |
 |------|------|
@@ -82,7 +81,7 @@ Swagger UI가 열리지 않는 문제가 있었음.
 
 ---
 
-# 📦 2. 프로젝트 구조
+# 프로젝트 구조
 
 ```
 src/main/java/com/example/demo
@@ -120,9 +119,9 @@ src/main/java/com/example/demo
     └── ProductService.java
 ```
 
-# 📝 3. API 명세
+# API 명세
 
-## ✔️ 상품 등록 (POST /products)
+## 상품 등록 (POST /products)
 
 ### Request
 ```json
@@ -146,7 +145,7 @@ src/main/java/com/example/demo
 }
 ```
 
-## ✔️ 상품 목록 조회 (GET /products)
+## 상품 목록 조회 (GET /products)
 
 ### Response
 ```json
@@ -163,7 +162,7 @@ src/main/java/com/example/demo
 }
 ```
 
-## ✔️ 주문 생성 (POST /orders)
+## 주문 생성 (POST /orders)
 
 ### Request
 ```json
@@ -183,13 +182,13 @@ src/main/java/com/example/demo
 }
 ```
 
-## ✔️ 주문 목록 조회 (GET /orders?userId=1)
+## 주문 목록 조회 (GET /orders?userId=1)
 
-## ✔️ 주문 상세 조회 (GET /orders/{orderId})
+## 주문 상세 조회 (GET /orders/{orderId})
 
-## ✔️ 주문 취소 (DELETE /orders/{orderId})
+## 주문 취소 (DELETE /orders/{orderId})
 
-# ⚠️ 4. 예외 처리 구조
+# 예외 처리 구조
 
 예외는 전부 `GlobalExceptionHandler` 에서 잡혀 JSON 형태로 반환됨.
 
@@ -203,7 +202,7 @@ src/main/java/com/example/demo
 }
 ```
 
-# ⚙️ 5. 실행 방법
+# 실행 방법
 
 ## 1) MySQL DB 생성
 ```sql
@@ -225,4 +224,4 @@ mvn spring-boot:run
 ```
 
 ## 4) Swagger 접속  
-👉 http://localhost:8080/swagger-ui/index.html
+http://localhost:8080/swagger-ui/index.html
