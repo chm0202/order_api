@@ -184,9 +184,72 @@ src/main/java/com/example/demo
 
 ## 주문 목록 조회 (GET /orders?userId=1)
 
+### Response
+```json
+{
+  "success": true,
+  "message": "주문 목록이 정상적으로 조회되었습니다.",
+  "data": [
+    {
+      "userId": 1,
+      "orderId": 3,
+      "status": "CREATED",
+      "items": [
+        {
+          "productName": "상품 A",
+          "price": 10000,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "userId": 1,
+      "orderId": 4,
+      "status": "CANCELED",
+      "items": [
+        {
+          "productName": "상품 B",
+          "price": 5000,
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}
+```
+
 ## 주문 상세 조회 (GET /orders/{orderId})
 
+### Response
+```json
+{
+  "success": true,
+  "message": "주문 조회 성공",
+  "data": {
+    "userId": 1,
+    "orderId": 3,
+    "status": "CREATED",
+    "items": [
+      {
+        "productName": "상품 A",
+        "price": 10000,
+        "quantity": 2
+      }
+    ]
+  }
+}
+```
+
 ## 주문 취소 (DELETE /orders/{orderId})
+
+### Response
+```json
+{
+  "success": true,
+  "message": "주문이 정상적으로 취소되었습니다.",
+  "data": null
+}
+```
 
 # 예외 처리 구조
 
